@@ -83,6 +83,7 @@ svgBoardObject.onmousedown = function(event) {
 		setViewBoxValues(SVG_BOARD_ID, moveViewBox);
 	}
 	svgBoardObject.onmouseup = function(e) {
+        saveBoardSetting(""); //
 		document.onmousemove = null;
 		svgBoardObject.onmouseup = null;
 	}
@@ -109,6 +110,7 @@ function initBoard(boardId) {
 	initHeight=document.documentElement.clientHeight;
 	board.setAttribute('width', initWidth);
 	board.setAttribute('height', initHeight);
+    getBoardSettingsFromServer(); //TO DO
 	setViewBoxValues(SVG_BOARD_ID, [0, 0, initWidth, initHeight]);
 }
 
