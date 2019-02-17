@@ -28,10 +28,10 @@
         </property>
     </bean>
 
-    <!-- Redirect view -->
+    <!-- Redirect view
     <bean id="GuestBookRedirect"
           class="org.springframework.web.servlet.view.RedirectView">
         <property name="url" value="/board" />
-    </bean>
+    </bean>-->
 
 </beans>
