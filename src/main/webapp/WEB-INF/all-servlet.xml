@@ -16,6 +16,19 @@
 
     <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
 
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="jsonConverter" />
+            </list>
+        </property>
+    </bean>
+
+    <bean id="jsonConverter"
+          class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+        <property name="supportedMediaTypes" value="application/json" />
+    </bean>
+
     <mvc:default-servlet-handler />
 
     <bean id="viewResolver"

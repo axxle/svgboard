@@ -8,12 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import ru.axxle.svgboard.pojo.Board;
 import ru.axxle.svgboard.service.BoardService;
 
 /**
  * Контроллер Доски
  */
+@RestController
 @Controller
 public class BoardController {
     private static final String BOARD_URL = "/board";
