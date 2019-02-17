@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.axxle.svgboard.pojo.Board;
@@ -25,6 +26,14 @@ public class BoardController {
     ResponseEntity<Board> getBoardSettings() {
         Board board = boardService.getById(1L);
         return new ResponseEntity<Board>(board, HttpStatus.OK);
+    }
+
+    @RequestMapping(
+            value = BOARD_URL,
+            method = RequestMethod.POST)
+    ResponseEntity<Board> saveBoardSettings(@RequestBody Board board) {
+        Board savedBoard = boardService.saveBoard(board);
+        return new ResponseEntity<Board>(savedBoard, HttpStatus.OK);
     }
 
 }

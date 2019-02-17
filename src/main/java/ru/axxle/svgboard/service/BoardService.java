@@ -8,7 +8,7 @@ public interface BoardService {
      * Сохранение доски
      * @param board - доска
      */
-    void saveBoard(Board board);
+    Board saveBoard(Board board);
 
     /**
      * Получение доски по идентификатору

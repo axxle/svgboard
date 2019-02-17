@@ -13,8 +13,9 @@ public class BoardServiceImpl implements BoardService {
     private BoardDao dao;
 
     @Override
-    public void saveBoard(Board board) {
+    public Board saveBoard(Board board) {
         dao.save(board);
+        return dao.getById(board.getId());
     }
 
     @Override
