@@ -14,7 +14,7 @@ import ru.axxle.svgboard.service.BoardService;
  */
 @Controller
 public class BoardController {
-    private static final String BOARD_URL = "/svgboard";
+    private static final String BOARD_URL = "/board";
 
     @Autowired
     private BoardService boardService;

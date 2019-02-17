@@ -163,7 +163,7 @@ function getBoardSettingsFromServer() {
     $.ajax({
         type: "GET",
         contentType: "application/json",
-        url: "svgboard/",
+        url: "board/",
         cache: false,
         success: function(settingsFromServer){
             console.log('Получено с сервера: ' + settingsFromServer);
@@ -193,7 +193,7 @@ function saveBoardSetting(settings) {
     $.ajax({
         type: "GET",
         contentType: "application/json",
-        url: "svgboard/",
+        url: "board/",
         cache: false,
         success: function(settingsFromServer){
             console.log('Получено с сервера: ' + settingsFromServer);
