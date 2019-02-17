@@ -193,7 +193,7 @@ function saveBoardSetting(settings) {
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        data: boardSetting,
+        data: JSON.stringify(boardSetting),
         url: "board/",
         cache: false,
         success: function(savedFromServer){
