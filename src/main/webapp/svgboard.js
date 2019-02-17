@@ -189,17 +189,16 @@ function saveBoardSetting(settings) {
     var width = document.getElementById(SVG_BOARD_ID).getAttribute("width");
     var height = document.getElementById(SVG_BOARD_ID).getAttribute("height");
     var viewbox = document.getElementById(SVG_BOARD_ID).getAttribute("viewBox");
-    //
+    var boardSetting = {"id":1,"width":width,"height":height,"viewbox":viewbox};
     $.ajax({
-        type: "GET",
+        type: "POST",
         contentType: "application/json",
+        data: boardSetting,
         url: "board/",
         cache: false,
-        success: function(settingsFromServer){
-            console.log('Получено с сервера: ' + settingsFromServer);
+        success: function(savedFromServer){
+            console.log('Сохранено и получено с сервера: ' + savedFromServer);
         }
     });
-	//
-    console.log("Отправка настроек доски на сервер: "
-        , "width=", width, " height=", height, " viewbox=", viewbox);
+    //console.log("Отправка настроек доски на сервер: ", "width=", width, " height=", height, " viewbox=", viewbox);
 }
