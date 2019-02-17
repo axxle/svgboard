@@ -160,6 +160,15 @@ function getScaleValues(wheelDelta, mouseX, mouseY) {
 
 /*Получение сохраненных настроек доски*/
 function getBoardSettingsFromServer() {
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: "svgboard/",
+        cache: false,
+        success: function(settingsFromServer){
+            console.log('Получено с сервера: ' + settingsFromServer);
+        }
+    });
     //хочу получать настройки с сервера при обновлении страницы, или по требованию
     var width = "1920";
     var height = "908";
@@ -180,6 +189,17 @@ function saveBoardSetting(settings) {
     var width = document.getElementById(SVG_BOARD_ID).getAttribute("width");
     var height = document.getElementById(SVG_BOARD_ID).getAttribute("height");
     var viewbox = document.getElementById(SVG_BOARD_ID).getAttribute("viewBox");
+    //
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: "svgboard/",
+        cache: false,
+        success: function(settingsFromServer){
+            console.log('Получено с сервера: ' + settingsFromServer);
+        }
+    });
+	//
     console.log("Отправка настроек доски на сервер: "
         , "width=", width, " height=", height, " viewbox=", viewbox);
 }

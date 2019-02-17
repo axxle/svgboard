@@ -1,14 +1,13 @@
 package ru.axxle.svgboard.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import ru.axxle.svgboard.pojo.Board;
 import ru.axxle.svgboard.service.BoardService;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Контроллер Доски
@@ -20,14 +19,12 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
-    /** GET или POST
-     * Получение параметров доски
-     * @return -
-     */
-
-    /** PUT или POST
-     * Сохранение обновленных параметров доски
-     * @return -
-     */
+    @RequestMapping(
+            value = "/bookmark",
+            method = RequestMethod.GET)
+    ResponseEntity<Board> getBoardSettings() {
+        Board board = boardService.getById(1L);
+        return new ResponseEntity<Board>(board, HttpStatus.OK);
+    }
 
 }
