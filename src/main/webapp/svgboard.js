@@ -177,9 +177,9 @@ function saveBoardSetting(settings) {
     // со сбросом таймера при последующих изменениях:
     //	1. При перетаскивании, один раз после отпускания кнопки
     //	2. При масштабировании
-    var width = document.getElementById(id).getAttribute("width");
-    var height = document.getElementById(id).getAttribute("height");
-    var viewbox = document.getElementById(id).getAttribute("viewBox");
+    var width = document.getElementById(SVG_BOARD_ID).getAttribute("width");
+    var height = document.getElementById(SVG_BOARD_ID).getAttribute("height");
+    var viewbox = document.getElementById(SVG_BOARD_ID).getAttribute("viewBox");
     console.log("Отправка настроек доски на сервер: "
         , "width=", width, " height=", height, " viewbox=", viewbox);
 }
