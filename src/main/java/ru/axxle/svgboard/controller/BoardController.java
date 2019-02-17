@@ -20,7 +20,7 @@ public class BoardController {
     private BoardService boardService;
 
     @RequestMapping(
-            value = "/bookmark",
+            value = "/",
             method = RequestMethod.GET)
     ResponseEntity<Board> getBoardSettings() {
         Board board = boardService.getById(1L);
