@@ -1,5 +1,6 @@
-CREATE TABLE comments (
+CREATE TABLE boards (
   id SERIAL PRIMARY KEY,
-  name CHAR(255),
-  comment CHAR(1023)
+  width CHAR(63),			-- '1366'
+  height CHAR(63),			-- '657'
+  viewbox CHAR(100)			-- '-482 -241 5464 2628'
 );

@@ -4,10 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- DAO -->
-    <bean id="commentDao" class="ru.axxle.guestbook.dao.CommentDaoJdbcImpl" />
+    <bean id="boardDao" class="ru.axxle.svgboard.dao.BoardDaoJdbcImpl" />
 
     <!-- Service -->
-    <bean id="commentService" class="ru.axxle.guestbook.service.CommentServiceImpl" />
+    <bean id="boardService" class="ru.axxle.svgboard.service.BoardServiceImpl" />
 
     <!-- Postgres Heroku -->
     <bean class="java.net.URI" id="dbUrl">

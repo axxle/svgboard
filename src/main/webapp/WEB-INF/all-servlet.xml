@@ -12,7 +12,7 @@
 
     <mvc:annotation-driven/>                                 <!-- чтобы работал @Autowired в том числе -->
 
-    <context:component-scan base-package="ru.axxle.guestbook.controller"/>
+    <context:component-scan base-package="ru.axxle.svgboard.controller"/>
 
     <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
 
@@ -31,7 +31,7 @@
     <!-- Redirect view -->
     <bean id="GuestBookRedirect"
           class="org.springframework.web.servlet.view.RedirectView">
-        <property name="url" value="/guestbook" />
+        <property name="url" value="/board" />
     </bean>
 
 </beans>
