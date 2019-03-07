@@ -103,15 +103,22 @@ var setViewBoxValues = function (id, arr) {
   svg.setAttribute("viewBox", arr.join(' '));
 }
 
+/*if (!String.prototype.trim) {
+    (function() {
+        // Вырезаем BOM и неразрывный пробел
+        String.prototype.trim = function() {
+            return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+        };
+    })();
+}*/
 
-function initBoard(boardId) { 
-	var board = document.getElementById(SVG_BOARD_ID);
-	initWidth=document.documentElement.clientWidth;
-	initHeight=document.documentElement.clientHeight;
-	board.setAttribute('width', initWidth);
-	board.setAttribute('height', initHeight);
-    getBoardSettingsFromServer(); //TO DO
-	setViewBoxValues(SVG_BOARD_ID, [0, 0, initWidth, initHeight]);
+function initBoard(boardId) {
+    var board = document.getElementById(SVG_BOARD_ID);
+    initWidth=document.documentElement.clientWidth;
+    initHeight=document.documentElement.clientHeight;
+    board.setAttribute('width', initWidth);
+    board.setAttribute('height', initHeight);
+    getAndSetBoardSettingsFromServer();
 }
 
 /*Самовызываемая функция*/
@@ -159,25 +166,25 @@ function getScaleValues(wheelDelta, mouseX, mouseY) {
 }
 
 /*Получение сохраненных настроек доски*/
-function getBoardSettingsFromServer() {
+function getAndSetBoardSettingsFromServer() {
     $.ajax({
         type: "GET",
         contentType: "application/json",
         url: "board/",
         cache: false,
         success: function(settingsFromServer){
-            console.log('Получено с сервера: ' + settingsFromServer);
+            //console.log('Получено с сервера: ' + settingsFromServer);
+			var s = settingsFromServer;
+            var board = document.getElementById(SVG_BOARD_ID);
+            //console.log("s.viewbox = " + s.viewbox);
+            //console.log("s.width=" + parseInt(s.width.trim(), 10));
+            //console.log("s.height=" + parseInt(s.height.trim(), 10));
+            //setViewBoxValues(SVG_BOARD_ID, [0, 0, initWidth, initHeight]);
+            board.setAttribute("viewBox", s.viewbox);
+            //board.setAttribute('width', s.width);
+            //board.setAttribute('height', s.height);
         }
     });
-    //хочу получать настройки с сервера при обновлении страницы, или по требованию
-    var width = "1920";
-    var height = "908";
-    var viewbox = "0 0 1920 908";
-    //засетить в нужные аттрибуты
-    //var svg = document.getElementById(id);
-    //svg.setAttribute("viewBox", viewbox);
-    console.log("Получение настроек доски с сервера: "
-        , "width=", width, " height=", height, " viewbox=", viewbox);
 }
 
 /*Сохранение настроек доски на сервере*/
@@ -200,5 +207,4 @@ function saveBoardSetting(settings) {
             console.log('Сохранено и получено с сервера: ' + savedFromServer);
         }
     });
-    //console.log("Отправка настроек доски на сервер: ", "width=", width, " height=", height, " viewbox=", viewbox);
 }

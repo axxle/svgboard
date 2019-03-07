@@ -1,27 +1,14 @@
-package ru.axxle.svgboard.pojo;
+package ru.axxle.svgboard.jakson;
 
-/**
- * Описание объекта "Доска"
- */
-public class Board {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class JaksonBoard {
 
     private long id;
     private String width;
     private String height;
     private String viewbox;
-
-    public Board(String width, String height, String viewbox){
-        this.width = width;
-        this.height = height;
-        this.viewbox = viewbox;
-    }
-
-    public Board(long id, String width, String height, String viewbox){
-        this.id = id;
-        this.width = width;
-        this.height = height;
-        this.viewbox = viewbox;
-    }
 
     public long getId() {
         return id;
@@ -57,7 +44,7 @@ public class Board {
 
     @Override
     public String toString() {
-        return "Board{" +
+        return "JaksonBoard{" +
                 "id=" + id +
                 ", width='" + width + '\'' +
                 ", height='" + height + '\'' +

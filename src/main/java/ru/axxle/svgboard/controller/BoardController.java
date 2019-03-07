@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import ru.axxle.svgboard.jakson.JaksonBoard;
 import ru.axxle.svgboard.pojo.Board;
 import ru.axxle.svgboard.service.BoardService;
 
@@ -34,8 +35,9 @@ public class BoardController {
     @RequestMapping(
             value = BOARD_URL,
             method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<Board> saveBoardSettings(@RequestBody Board board) {
-        Board savedBoard = boardService.saveBoard(board);
+    ResponseEntity<Board> saveBoardSettings(@RequestBody JaksonBoard jaksonBoard) {
+        Board savedBoard = boardService.saveBoard(new Board(jaksonBoard.getId(),
+                jaksonBoard.getWidth(),jaksonBoard.getHeight(),jaksonBoard.getViewbox()));
         return new ResponseEntity<Board>(savedBoard, HttpStatus.OK);
     }
 
